@@ -1,0 +1,6 @@
+module Pods_Dnn {
+  umbrella header "Pods-Dnn-umbrella.h"
+
+  export *
+  module * { export * }
+}
