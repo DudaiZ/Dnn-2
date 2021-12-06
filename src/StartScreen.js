@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   desc1,
   desc2,
@@ -19,20 +20,21 @@ import {
 } from "react-native";
 import color from "../src/component/color";
 import { Entypo, Ionicons } from "../src/component/icon";
+import symbolicateStackTrace from "react-native/Libraries/Core/Devtools/symbolicateStackTrace";
 
 const slides = [
   {
     key: "1",
     title: <Text>{title1}</Text>,
     text: <Text>{desc1}</Text>,
-    image: images.logo,
+    image: images.logo2,
   },
   {
     key: "2",
     title: <Text>{title2}</Text>,
 
     text: <Text>{desc2}</Text>,
-    image: images.logo2,
+    image: images.logo3,
   },
   {
     key: "3",
@@ -41,38 +43,52 @@ const slides = [
     image: images.logo3,
   },
 ];
-
-const renderItem = ({ item }) => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Image source={item.image} style={styles.image} />
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.Text}>{item.text}</Text>
-    </SafeAreaView>
-  );
-};
-const renderNextButton = () => {
-  return (
-    <View>
-      <Entypo name="controller-next" color={color.SpaceGray} size={24} />
-    </View>
-  );
-};
-const renderDoneButton = () => {
-  return (
-    <View>
-      <Ionicons name="md-cloud-done-outline" color={color.blue} size={24} />
-    </View>
-  );
-};
-const StartScreen = () => {
-
+const StartScreen = ({ navigation }) => {
+  const [finish, setFinish] = useState(false);
+  const [counter, setCounter] = useState(0);
+  console.log(finish);
+  console.log(counter);
+  const renderItem = ({ item }) => {
+    return (
+      <SafeAreaView style={styles.container}>
+        <TouchableOpacity
+          style={styles.xButton}
+          onPress={() => {
+            navigation.replace("Login");
+            AsyncStorage.setItem("first", "1");
+          }}
+        >
+          {counter !== 2 ? (
+            <Text style={styles.nextButton}>Алгасах</Text>
+          ) : (
+            <Text style={styles.nextButton}>Дуусгах</Text>
+          )}
+        </TouchableOpacity>
+        <View style={styles.View}>
+          <Image source={item.image} style={styles.image} />
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.Text}>{item.text}</Text>
+        </View>
+      </SafeAreaView>
+    );
+  };
+  const oneDone = () => {
+    return setState({ showRealUp: true });
+  };
   return (
     <AppIntroSlider
+      activeDotStyle={{
+        width: "32%",
+        backgroundColor: color.primary,
+        height: 5,
+      }}
+      dotStyle={{ width: "32%", backgroundColor: color.budegGray, height: 5 }}
       data={slides}
       renderItem={renderItem}
-      renderDoneButton={renderDoneButton}
-      renderNextButton={renderNextButton}
+      onSlideChange={(index, lastIndex) => {
+        setCounter((index) => index + 1);
+        setFinish(index === 2);
+      }}
     ></AppIntroSlider>
   );
 };
@@ -80,8 +96,10 @@ const StartScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  View: {
+    marginTop: 100,
     alignItems: "center",
-    marginTop: 160,
   },
   image: {
     height: 200,
@@ -100,6 +118,13 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginVertical: 20,
     color: color.SpaceGray,
+  },
+  nextButton: {
+    textAlign: "right",
+    marginTop: 25,
+    marginRight: 25,
+    color: color.SpaceGray,
+    fontSize: 14,
   },
 });
 

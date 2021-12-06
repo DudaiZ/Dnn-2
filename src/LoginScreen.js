@@ -18,13 +18,15 @@ import {
 import Mybutton from "./component/Mybutton";
 import MyInput from "./component/MyInput";
 import { Newtreh, Warning } from "./component/Text";
+import images from "./images/image";
+import {Image} from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.Container}>
       <TouchableOpacity
         style={styles.View1}
-        onPress={() => navigation.navigate("Login")}
+        onPress={() => navigation.navigate("Start")}
       >
         <Entypo name="chevron-small-left" size={16} color={color.SpaceGray} />
         <Text style={styles.Text}> {Newtreh} </Text>
@@ -68,6 +70,7 @@ const LoginScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.TouchableOpacity}>
           <Text style={styles.TouchText}>Нэвтрэх</Text>
         </TouchableOpacity>
+        <Image source={images.finger} style={styles.finger} />
       </View>
       <View>
         <TouchableOpacity
@@ -161,7 +164,15 @@ const styles = StyleSheet.create({
   },
   Final: {
     width: "100%",
+    flexDirection: 'row',
+    alignItems: 'center'
   },
+  finger: 
+    { width: 35,
+       height: 35,
+       marginHorizontal: 20,
+       
+       },
   FinalTouch: {
     height: 50,
     borderRadius: 5,
