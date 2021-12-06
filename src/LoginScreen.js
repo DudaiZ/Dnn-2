@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     paddingRight: 15,
   },
   Text: {
-    color: color.gray,
+    color: color.SpaceGray,
     fontWeight: "bold",
     fontSize: 16,
   },

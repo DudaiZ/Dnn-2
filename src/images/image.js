@@ -5,5 +5,6 @@ const images = {
   logo3: require("./logo3.png"),
   finger: require("./finger.png"),
   bulan: require("./bulan.png"),
+  pro: require("./Profile.png"),
 };
 export default images;

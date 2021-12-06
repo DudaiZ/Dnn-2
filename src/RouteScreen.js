@@ -5,13 +5,20 @@ import SplashScreen from "./SplashScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignScreen from "./SignScreen";
 import Introduction from "./Introduction";
+import MenuScreen from "./MenuScreen";
 
 const Stack = createNativeStackNavigator();
 
 const RouteScreen = ({ navigation }) => {
   return (
     <Stack.Navigator>
-      
+      {/* <Stack.Screen name="Splash" component={SplashScreen} />  */}
+
+      <Stack.Screen
+        name="Menu"
+        component={MenuScreen}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Start"
         component={StartScreen}
@@ -22,7 +29,7 @@ const RouteScreen = ({ navigation }) => {
         component={LoginScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Splash" component={SplashScreen} />
+
       <Stack.Screen
         name="Sign Up"
         component={SignScreen}

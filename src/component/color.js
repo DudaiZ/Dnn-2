@@ -6,6 +6,8 @@ const color = {
   black: "#000000",
   primary: "#14469F",
   white: "#FFFFFF",
-  budegGray: '#F5F5F5',
+  budegGray: "#F5F5F5",
+  gray: "#E5E4E4",
+  succes: "#13CE66",
 };
 export default color;
