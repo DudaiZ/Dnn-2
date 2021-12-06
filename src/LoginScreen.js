@@ -19,66 +19,68 @@ import Mybutton from "./component/Mybutton";
 import MyInput from "./component/MyInput";
 import { Newtreh, Warning } from "./component/Text";
 import images from "./images/image";
-import {Image} from 'react-native';
+import { Image } from "react-native";
 
 const LoginScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.Container}>
-      <TouchableOpacity
-        style={styles.View1}
-        onPress={() => navigation.navigate("Start")}
-      >
-        <Entypo name="chevron-small-left" size={16} color={color.SpaceGray} />
-        <Text style={styles.Text}> {Newtreh} </Text>
-      </TouchableOpacity>
-
-      <View style={styles.Warning}>
-        <View style={styles.View2}>
-          <Ionicons
-            name="information-circle-outline"
-            size={23}
-            style={styles.Warn}
-          />
-          <Text style={{ color: color.SpaceGray }}>{Warning}</Text>
-        </View>
-        <View style={styles.View3}>
-          <AntDesign
-            name="user"
-            size={20}
-            color={color.SpaceGray}
-            style={styles.user}
-          />
-          <MyInput placeholder="Хэрэглэгчийн нэр" />
-        </View>
-        <View style={styles.View3}>
-          <Feather name="eye-off" size={20} style={styles.icon} />
-          <MyInput secureTextEntry={true} placeholder="Нууц үг" />
-        </View>
-        <View style={styles.Check}>
-          <View style={styles.Secure}>
-            <Fontisto
-              name="checkbox-passive"
-              size={10}
-              style={styles.checkIcon}
-            />
-            <Text style={styles.Seem}>Намайг сана</Text>
-          </View>
-          <Text style={styles.Seem}>Нууц үг сэргээх</Text>
-        </View>
-      </View>
-      <View style={styles.Final}>
-        <TouchableOpacity style={styles.TouchableOpacity}>
-          <Text style={styles.TouchText}>Нэвтрэх</Text>
-        </TouchableOpacity>
-        <Image source={images.finger} style={styles.finger} />
-      </View>
-      <View>
+      <View style={{ marginHorizontal: 25 }}>
         <TouchableOpacity
-          style={styles.FinalTouch}
-          onPress={() => navigation.navigate("Sign Up")}
+          style={styles.View1}
+          onPress={() => navigation.navigate("Start")}
         >
-          <Text>Бүртгүүлэх</Text>
+          <Entypo name="chevron-small-left" size={16} color={color.SpaceGray} />
+          <Text style={styles.Text}> {Newtreh} </Text>
         </TouchableOpacity>
+
+        <View style={styles.Warning}>
+          <View style={styles.View2}>
+            <Ionicons
+              name="information-circle-outline"
+              size={23}
+              style={styles.Warn}
+            />
+            <Text style={{ color: color.SpaceGray }}>{Warning}</Text>
+          </View>
+          <View style={styles.View3}>
+            <AntDesign
+              name="user"
+              size={20}
+              color={color.SpaceGray}
+              style={styles.user}
+            />
+            <MyInput placeholder="Хэрэглэгчийн нэр" />
+          </View>
+          <View style={styles.View3}>
+            <Feather name="eye-off" size={20} style={styles.icon} />
+            <MyInput secureTextEntry={true} placeholder="Нууц үг" />
+          </View>
+          <View style={styles.Check}>
+            <View style={styles.Secure}>
+              <Fontisto
+                name="checkbox-passive"
+                size={10}
+                style={styles.checkIcon}
+              />
+              <Text style={styles.Seem}>Намайг сана</Text>
+            </View>
+            <Text style={styles.Seem}>Нууц үг сэргээх</Text>
+          </View>
+        </View>
+        <View style={styles.Final}>
+          <TouchableOpacity style={styles.TouchableOpacity}>
+            <Text style={styles.TouchText}>Нэвтрэх</Text>
+          </TouchableOpacity>
+          <Image source={images.finger} style={styles.finger} />
+        </View>
+        <View>
+          <TouchableOpacity
+            style={styles.FinalTouch}
+            onPress={() => navigation.navigate("Sign Up")}
+          >
+            <Text>Бүртгүүлэх</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -87,7 +89,7 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-    marginHorizontal: 25,
+    backgroundColor: color.white,
   },
   View1: {
     flexDirection: "row",
@@ -164,15 +166,10 @@ const styles = StyleSheet.create({
   },
   Final: {
     width: "100%",
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: "row",
+    alignItems: "center",
   },
-  finger: 
-    { width: 35,
-       height: 35,
-       marginHorizontal: 20,
-       
-       },
+  finger: { width: 35, height: 35, marginHorizontal: 20 },
   FinalTouch: {
     height: 50,
     borderRadius: 5,
